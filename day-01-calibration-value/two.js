@@ -1,9 +1,9 @@
 import fs from "fs";
 const input = fs.readFileSync("day-1/input.txt", "utf8").split("\n");
 
-for (let i = 0; i < input.length; i++) {
-  input[i] = input[i].replace("\r", "");
-}
+input.forEach((line, i) => {
+  input[i] = line.replace("\r", "");
+});
 
 const numbers = {
   one: 1,
@@ -67,11 +67,11 @@ function getLastNumber(str) {
 
 let sum = 0;
 
-for (let i = 0; i < input.length; i++) {
+input.forEach((line, i) => {
   const num = parseInt(
-    getFirstNumber(parse(input[i])) + getLastNumber(parseReverse(input[i]))
+    getFirstNumber(parse(line)) + getLastNumber(parseReverse(line))
   );
   sum += num;
-}
+});
 
 console.log("part 2: ", sum);
